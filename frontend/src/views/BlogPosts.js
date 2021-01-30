@@ -74,7 +74,7 @@ class BlogPosts extends React.Component {
           category: "Travel",
           categoryTheme: "info",
           author: "Anna Ken",
-          authorAvatar: require("../images/avatars/0.jpg"),
+          authorAvatar: require("../images/avatars/0.png"),
           title:
             "Attention he extremity unwilling on otherwise cars backwards yet",
           body:

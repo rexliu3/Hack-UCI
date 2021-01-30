@@ -51,9 +51,11 @@ const UserAccountDetails = ({ title }) => {
   const initstate = { firstName: '', 
                     lastName: '', 
                     age: '', 
-                    gender: '', 
-                    phoneNumber: '', 
                     email: '', 
+                    phone: '', 
+                    address: '',
+                    city: '',
+                    state: '',
                     medicalConditions: '',
                     wapScore: '',
                     pastApplications: ''
@@ -109,8 +111,7 @@ const UserAccountDetails = ({ title }) => {
           <Col>
             <Form onSubmit={sendUserInfo}>
               <Row form>
-                {/* First Name */}
-                <Col md="6" className="form-group">
+                <Col md="4" className="form-group">
                   <label htmlFor="feFirstName">First Name</label>
                   <FormInput
                     id="feFirstName"
@@ -120,8 +121,7 @@ const UserAccountDetails = ({ title }) => {
                     onChange={handleChange}
                   />
                 </Col>
-                {/* Last Name */}
-                <Col md="6" className="form-group">
+                <Col md="4" className="form-group">
                   <label htmlFor="feLastName">Last Name</label>
                   <FormInput
                     id="feLastName"
@@ -131,13 +131,21 @@ const UserAccountDetails = ({ title }) => {
                     onChange={handleChange}
                   />
                 </Col>
+                <Col md="4" className="form-group">
+                  <label htmlFor="feLastName">Age</label>
+                  <FormInput
+                    id="feAge"
+                    placeholder="Age"
+                    value={inputs.age}
+                    name="age"
+                    onChange={handleChange}
+                  />
+                </Col>
               </Row>
               <Row form>
-                {/* Email */}
                 <Col md="6" className="form-group">
                   <label htmlFor="feEmail">Email</label>
                   <FormInput
-                    type="email"
                     id="feEmail"
                     placeholder="Email Address"
                     value={inputs.email}
@@ -151,9 +159,9 @@ const UserAccountDetails = ({ title }) => {
                   <FormInput
                     id="fePassword"
                     placeholder="Phone Number"
-                    value={phone}
+                    value={inputs.phone}
                     name="phone"
-                    onChange={(event) => {onChangeHandler(event)}}
+                    onChange={handleChange}
                   />
                 </Col>
               </Row>
@@ -162,40 +170,44 @@ const UserAccountDetails = ({ title }) => {
                 <FormInput
                   id="feAddress"
                   placeholder="Address"
-                  value={address}
+                  value={inputs.address}
                   name="address"
-                  onChange={(event) => {onChangeHandler(event)}}
+                  onChange={handleChange}
                 /> 
               </FormGroup>
               <Row form>
-                {/* City */}
                 <Col md="6" className="form-group">
                   <label htmlFor="feCity">City</label>
                   <FormInput
                     id="feCity"
                     placeholder="City"
-                    value={city}
+                    value={inputs.city}
                     name="city"
-                    onChange={(event) => {onChangeHandler(event)}}
+                    onChange={handleChange}
                   />
                 </Col>
-                {/* State */}
                 <Col md="6" className="form-group">
                 <label htmlFor="feInputState">State</label>
                   <FormInput
                     id="feInputState"
                     placeholder="State"
-                    value={state}
+                    value={inputs.state}
                   name="state"
-                  onChange={(event) => {onChangeHandler(event)}}
+                  onChange={handleChange}
                   />
                 </Col>
               </Row>
               <Row form>
-                {/* Description */}
                 <Col md="12" className="form-group">
                   <label htmlFor="feDescription">Medical Conditions</label>
                   <FormTextarea id="feDescription" rows="5" />
+                  <FormInput
+                    id="feMedicalCondition"
+                    placeholder=""
+                    value={inputs.medicalConditions}
+                    name="medicalConditions"
+                    onChange={handleChange}
+                  />
                 </Col>
               </Row>
               <Button>Update Account</Button>
