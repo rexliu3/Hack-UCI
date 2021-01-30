@@ -22,49 +22,49 @@ class BlogPosts extends React.Component {
       // First list of posts.
       PostsListOne: [
         {
-          backgroundImage: require("../images/content-management/1.jpeg"),
-          category: "Business",
+          backgroundImage: require("../images/articles/article1.png"),
+          category: "Facts",
           categoryTheme: "dark",
-          author: "Anna Kunis",
-          authorAvatar: require("../images/avatars/1.jpg"),
-          title: "Conduct at an replied removal an amongst",
+          authorAvatar: require("../images/articles/article12.png"),
+          title: "COVID-19 vaccines: Get the facts",
           body:
-            "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. But in for determine what would see...",
-          date: "28 February 2019"
+            "Looking to get the facts about the new COVID-19 vaccines? Here's what you need to know about the different vaccines and the benefits of getting vaccinated.",
+          date: "30 January 2021",
+          link: "https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-vaccine/art-20484859"
         },
         {
-          backgroundImage: require("../images/content-management/2.jpeg"),
-          category: "Travel",
+          backgroundImage: require("../images/articles/article2.jpg"),
+          category: "Benefits",
           categoryTheme: "info",
-          author: "James Jamerson",
-          authorAvatar: require("../images/avatars/2.jpg"),
-          title: "Off tears are day blind smile alone had ready",
+          authorAvatar: require("../images/articles/article22.png"),
+          title: "Benefits of Getting a COVID-19 Vaccine",
           body:
-            "Is at purse tried jokes china ready decay an. Small its shy way had woody downs power. To denoting admitted speaking learning my...",
-          date: "29 February 2019"
+            "Summary of the benefits of COVID-19 vaccination based on what we currently know. CDC will continue to update this page as more data become available.",
+          date: "5 January 2021",
+          link: "https://www.cdc.gov/coronavirus/2019-ncov/vaccines/vaccine-benefits.html"
         },
         {
-          backgroundImage: require("../images/content-management/3.jpeg"),
-          category: "Technology",
+          backgroundImage: require("../images/articles/article3.png"),
+          category: "Side Effects",
           categoryTheme: "royal-blue",
-          author: "Jimmy Jackson",
-          authorAvatar: require("../images/avatars/2.jpg"),
-          title: "Difficult in delivered extensive at direction",
+          authorAvatar: require("../images/articles/article32.jpg"),
+          title: "Should I Get the Vaccine if I’ve Already Had COVID-19 — and Would My Side Effects Be Worse?",
           body:
-            "Is at purse tried jokes china ready decay an. Small its shy way had woody downs power. To denoting admitted speaking learning my...",
-          date: "29 February 2019"
+            "The short answer from a pulmonary and critical care specialist.",
+          date: "28 January 2021",
+          link: "https://health.clevelandclinic.org/should-i-get-the-vaccine-if-ive-already-had-covid-19-and-would-my-side-effects-be-worse/"
         },
         {
-          backgroundImage: require("../images/content-management/4.jpeg"),
-          category: "Business",
+          backgroundImage: require("../images/articles/article4.png"),
+          category: "Other",
           categoryTheme: "warning",
-          author: "John James",
-          authorAvatar: require("../images/avatars/3.jpg"),
-          title: "It so numerous if he may outlived disposal",
+          authorAvatar: require("../images/articles/article42.png"),
+          title: "VERIFY: Should you wait to get the COVID-19 vaccine if you're currently sick?",
           body:
-            "How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved ready road market resolution...",
-          date: "29 February 2019"
-        }
+            "Should someone who is currently sick wait to recover before getting the COVID-19 vaccine? Our Verify team gets to the bottom of it.",
+          date: "28 January 2021",
+          link: "https://www.wusa9.com/article/news/verify/can-i-get-the-covid-vaccine-i-am-sick-or-had-covid-vaccine-explainers-101-fact-check/65-6ae7a5d1-f2e8-4d8d-b359-511e3980df6d"
+        },
       ],
 
       // Second list of posts.
@@ -146,6 +146,8 @@ class BlogPosts extends React.Component {
           {PostsListOne.map((post, idx) => (
             <Col lg="3" md="6" sm="12" className="mb-4" key={idx}>
               <Card small className="card-post card-post--1">
+              <a
+                      href={post.link} target="_blank">
                 <div
                   className="card-post__image"
                   style={{ backgroundImage: `url(${post.backgroundImage})` }}
@@ -156,19 +158,19 @@ class BlogPosts extends React.Component {
                   >
                     {post.category}
                   </Badge>
+                  
                   <div className="card-post__author d-flex">
                     <a
-                      href="#"
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{ backgroundImage: `url('${post.authorAvatar}')` }}
                     >
-                      Written by {post.author}
                     </a>
                   </div>
                 </div>
+                </a>
                 <CardBody>
                   <h5 className="card-title">
-                    <a href="#" className="text-fiord-blue">
+                    <a href={post.link} target="_blank" className="text-fiord-blue">
                       {post.title}
                     </a>
                   </h5>
