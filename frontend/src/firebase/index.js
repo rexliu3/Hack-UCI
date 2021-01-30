@@ -12,6 +12,10 @@ firebase.initializeApp({
 });
 
 let db = firebase.firestore()
+let auth = firebase.auth()
+let provider = new firebase.auth.GoogleAuthProvider()
+
+export {auth, provider};
 
 export default {
   firebase, db

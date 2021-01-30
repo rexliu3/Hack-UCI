@@ -7,11 +7,6 @@ export default function() {
       htmlAfter: ""
     },
     {
-      title: "Submit Appeal",
-      htmlBefore: '<i class="material-icons">note_add</i>',
-      to: "/submit-appeal",
-    },
-    {
       title: "Learn About Covid-19",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/education",

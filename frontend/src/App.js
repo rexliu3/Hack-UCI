@@ -7,7 +7,10 @@ import withTracker from "./withTracker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles.css";
 
+import UserProvider from "./firebase/UserProvider";
+
 export default () => (
+  <UserProvider>
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
     <div>
       {routes.map((route, index) => {
@@ -34,4 +37,5 @@ export default () => (
       })}
     </div>
   </Router>
+  </UserProvider>
 );
