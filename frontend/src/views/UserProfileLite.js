@@ -52,7 +52,7 @@ const UserProfileLite = () => {
             </Row>
             <Row>
               <Col lg="4">
-                <UserDetails data={{photo: user.photoURL, name: user.displayName}}/>
+                <UserDetails data={{photo: user.photoURL, displayName: user.displayName}}/>
               </Col>
               <Col lg="8">
                 <UserAccountDetails />

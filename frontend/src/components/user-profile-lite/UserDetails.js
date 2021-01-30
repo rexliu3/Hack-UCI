@@ -58,7 +58,7 @@ const UserDetails = (props ) => {
           width="110"
         />
       </div>
-      <h4 className="mb-0">{data.name}</h4>
+      <h4 className="mb-0">{data.displayName}</h4>
       <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
     </CardHeader>
     <ListGroup flush>
