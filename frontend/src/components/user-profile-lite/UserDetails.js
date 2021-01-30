@@ -98,7 +98,7 @@ UserDetails.propTypes = {
 UserDetails.defaultProps = {
   userDetails: {
     name: "Charles Liu",
-    avatar: require("./../../images/avatars/0.jpg"),
+    avatar: require("./../../images/avatars/0.png"),
     jobTitle: "Vulnerable Population",
     performanceReportTitle: "Vaccination Priority",
     performanceReportValue: 74,

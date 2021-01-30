@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+}
+
+main {
+    margin: 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    
+    background: #FFFFFF;
+    color: #000000;
+    /* font-family: Roboto;
+    font-weight: 600; */
+}
+
+.title {
+    margin-right: auto;
+    font-size: 175%;
+    padding: 12px 16px;
+}
+
+.item {
+    padding: 16px 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+.navButton {
+    color: black;
+    background: #F3F1FF;
+    border-radius: 2px;
+}
+
+.backgroundImg {
+    position: absolute;
+    width: 990px;
+    height: 655px;
+    left: 440px;
+    top: 80px;
+    /* background: url(covid-19-coronavirus-lab.png); */
+}
+
+.bigTitle {
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    left: 90px;
+    top: 300px;
+    font-size: 90px;
+
+    color: #000000;
+}
+
+.description {
+    position: absolute;
+    width: 519px;
+    height: 128px;
+    left: 120px;
+    top: 380px;
+
+    color: #000000;
+}
+
+.dashboard {
+    position: absolute;
+    left: 230px;
+    top: 430px;
+    size:'lg';
+}
