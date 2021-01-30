@@ -15,7 +15,38 @@ import {
   Button
 } from "shards-react";
 
-const UserAccountDetails = ({ title }) => (
+const UserAccountDetails = ({ title }) => {
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [address, setAddress] = React.useState("");
+  const [city, setCity] = React.useState("");
+  const [state, setState] = React.useState("");
+  const [medical, setMedical] = React.useState("");
+
+  const onChangeHandler = (event) => {
+    const {name, value} = event.currentTarget;
+    if (name==="firstName") {
+      setFirstName(value);
+    } else if (name === "lastName") {
+      setLastName(value);
+    }else if (name === "email") {
+      setEmail(value);
+    }else if (name === "phone") {
+      setPhone(value);
+    }else if (name === "address") {
+      setAddress(value);
+    }else if (name === "city") {
+      setCity(value);
+    }else if (name === "state") {
+      setState(value);
+    }else if (name === "medical") {
+      setMedical(value);
+    }
+  }
+
+  return (
   <Card small className="mb-4">
     <CardHeader className="border-bottom">
       <h6 className="m-0">{title}</h6>
@@ -32,8 +63,9 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feFirstName"
                     placeholder="First Name"
-                    value="Sierra"
-                    onChange={() => {}}
+                    value={firstName}
+                    name="firstName"
+                    onChange={(event) => {onChangeHandler(event)}}
                   />
                 </Col>
                 {/* Last Name */}
@@ -42,8 +74,9 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feLastName"
                     placeholder="Last Name"
-                    value="Brooks"
-                    onChange={() => {}}
+                    value={lastName}
+                    name="lastName"
+                    onChange={(event) => {onChangeHandler(event)}}
                   />
                 </Col>
               </Row>
@@ -55,21 +88,20 @@ const UserAccountDetails = ({ title }) => (
                     type="email"
                     id="feEmail"
                     placeholder="Email Address"
-                    value="sierra@example.com"
-                    onChange={() => {}}
-                    autoComplete="email"
+                    value={email}
+                    name="email"
+                    onChange={(event) => {onChangeHandler(event)}}
                   />
                 </Col>
                 {/* Password */}
                 <Col md="6" className="form-group">
-                  <label htmlFor="fePassword">Password</label>
+                  <label htmlFor="fePassword">Phone Number</label>
                   <FormInput
-                    type="password"
                     id="fePassword"
-                    placeholder="Password"
-                    value="EX@MPL#P@$$w0RD"
-                    onChange={() => {}}
-                    autoComplete="current-password"
+                    placeholder="Phone Number"
+                    value={phone}
+                    name="phone"
+                    onChange={(event) => {onChangeHandler(event)}}
                   />
                 </Col>
               </Row>
@@ -78,9 +110,10 @@ const UserAccountDetails = ({ title }) => (
                 <FormInput
                   id="feAddress"
                   placeholder="Address"
-                  value="1234 Main St."
-                  onChange={() => {}}
-                />
+                  value={address}
+                  name="address"
+                  onChange={(event) => {onChangeHandler(event)}}
+                /> 
               </FormGroup>
               <Row form>
                 {/* City */}
@@ -89,42 +122,38 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feCity"
                     placeholder="City"
-                    onChange={() => {}}
+                    value={city}
+                    name="city"
+                    onChange={(event) => {onChangeHandler(event)}}
                   />
                 </Col>
                 {/* State */}
-                <Col md="4" className="form-group">
-                  <label htmlFor="feInputState">State</label>
-                  <FormSelect id="feInputState">
-                    <option>Choose...</option>
-                    <option>...</option>
-                  </FormSelect>
-                </Col>
-                {/* Zip Code */}
-                <Col md="2" className="form-group">
-                  <label htmlFor="feZipCode">Zip</label>
+                <Col md="6" className="form-group">
+                <label htmlFor="feInputState">State</label>
                   <FormInput
-                    id="feZipCode"
-                    placeholder="Zip"
-                    onChange={() => {}}
+                    id="feInputState"
+                    placeholder="State"
+                    value={state}
+                  name="state"
+                  onChange={(event) => {onChangeHandler(event)}}
                   />
                 </Col>
               </Row>
               <Row form>
                 {/* Description */}
                 <Col md="12" className="form-group">
-                  <label htmlFor="feDescription">Description</label>
+                  <label htmlFor="feDescription">Medical Conditions</label>
                   <FormTextarea id="feDescription" rows="5" />
                 </Col>
               </Row>
-              <Button theme="accent">Update Account</Button>
+              <Button>Update Account</Button>
             </Form>
           </Col>
         </Row>
       </ListGroupItem>
     </ListGroup>
   </Card>
-);
+)};
 
 UserAccountDetails.propTypes = {
   /**

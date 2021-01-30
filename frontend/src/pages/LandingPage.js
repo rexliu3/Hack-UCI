@@ -1,5 +1,5 @@
 import React from "react";
-import './style.scss';
+import './LandingPage.scss';
 
 const LandingPage = () => {
     return (

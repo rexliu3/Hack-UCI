@@ -9,6 +9,8 @@ import {
   Progress
 } from "shards-react";
 
+import Slider from '@material-ui/core/Slider';
+
 const UserDetails = ({ userDetails }) => (
   <Card small className="mb-4 pt-3">
     <CardHeader className="border-bottom text-center">
@@ -22,9 +24,6 @@ const UserDetails = ({ userDetails }) => (
       </div>
       <h4 className="mb-0">{userDetails.name}</h4>
       <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
-      <Button pill outline size="sm" className="mb-2">
-        <i className="material-icons mr-1">person_add</i> Follow
-      </Button>
     </CardHeader>
     <ListGroup flush>
       <ListGroupItem className="px-4">
@@ -41,13 +40,23 @@ const UserDetails = ({ userDetails }) => (
             </span>
           </Progress>
         </div>
+        <Slider
+        defaultValue={10}
+        getAriaValueText={5}
+        aria-labelledby="discrete-slider-small-steps"
+        step={10}
+        marks
+        min={0}
+        max={100}
+        valueLabelDisplay="auto"
+      />
       </ListGroupItem>
-      <ListGroupItem className="p-4">
+      {/*<ListGroupItem className="p-4">
         <strong className="text-muted d-block mb-2">
           {userDetails.metaTitle}
         </strong>
         <span>{userDetails.metaValue}</span>
-      </ListGroupItem>
+</ListGroupItem>*/}
     </ListGroup>
   </Card>
 );
@@ -61,11 +70,13 @@ UserDetails.propTypes = {
 
 UserDetails.defaultProps = {
   userDetails: {
-    name: "Sierra Brooks",
+    name: "Charles Liu",
     avatar: require("./../../images/avatars/0.jpg"),
-    jobTitle: "Project Manager",
-    performanceReportTitle: "Workload",
+    jobTitle: "Vulnerable Population",
+    performanceReportTitle: "Vaccination Priority",
     performanceReportValue: 74,
+    performanceReport2: "Estimated Time of Vaccination",
+    performanceReport2: 4,
     metaTitle: "Description",
     metaValue:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
