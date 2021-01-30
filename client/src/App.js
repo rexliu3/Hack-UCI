@@ -1,66 +1,28 @@
 import React, {useEffect, useState} from 'react';
-import firebase from './firebase/index'
+import axiox from 'axios'
+import firebase from "firebase";
+require('firebase/functions');
+firebase.initializeApp({
+  apiKey: "AIzaSyBtmmlfbbVOYfwL5sTJtPx6zyuRpl34CKc",
+  authDomain: "hackuci-ac4d9.firebaseapp.com",
+  projectId: "hackuci-ac4d9",
+  storageBucket: "hackuci-ac4d9.appspot.com",
+  messagingSenderId: "959798035499",
+  appId: "1:959798035499:web:dad26188af2e93eb6d166e",
+  measurementId: "G-C6SP7N9SFR"
+});
+const functions = firebase.functions();
 
 const App = () => {
-  const [users, setUser] = useState([])
-  const initState = { firstName: '', lastName: ''}
-  const [inputs, setInputs] = useState(initState)
-
-  console.log(firebase.db)
-
-  useEffect( () => {
-      getUsers()
-  }, [])
-
-  const getUsers = () => {
-    firebase.db.collection('Covid-19 Priority Queue').get()
-      .then(querySnapshot => {
-      querySnapshot.forEach( doc => {
-
-      setUser(prev => ([...prev, doc.data()]))
-      })
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-  }
-
-
-  const sendUserInfo = async (e) => {
-    e.preventDefault()
-    await firebase.db.collection('Covid-19 Priority Queue').add(inputs)
-    .then( async documentReference => {
-      console.log('user ID', documentReference.id)
-      await setUser([])
-
-      getUsers()
-    })
-    .catch(error => {
-      console.log(error.message)
-    })
-
-  }
-
-  const handleChange = e => {
-    const {name, value} = e.target
-    setInputs(prev => ( {...prev, [name]: value} ))
+  const sendText = e => {
+    console.log('hi')
+    const sayHello = firebase.functions().httpsCallable('sayHello')
+    sayHello().then(m => console.log('success')).catch((err) => console.log('error'));
   }
 
   return (
     <div>
-      <h1>Submit User Info</h1>
-        <form onSubmit={sendUserInfo}>
-          <input name='First Name'
-            placeholder="John" 
-            value={inputs.firstName}
-            onChange={handleChange}/>
-          <input 
-            name='Last Name'
-            value={inputs.lastName} 
-            placeholder="Smith" 
-            onChange={handleChange}/>
-            <button>Submit</button>
-        </form>
+      <button onClick={sendText}>Send</button>
     </div>
   );
 };
