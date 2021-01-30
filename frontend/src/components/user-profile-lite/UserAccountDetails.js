@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -14,6 +14,7 @@ import {
   FormTextarea,
   Button
 } from "shards-react";
+import firebase from '../../firebase/index';
 
 const UserAccountDetails = ({ title }) => {
   const [firstName, setFirstName] = React.useState("");
@@ -46,6 +47,57 @@ const UserAccountDetails = ({ title }) => {
     }
   }
 
+  const [users, setUser] = useState([])
+  const initstate = { firstName: '', 
+                    lastName: '', 
+                    age: '', 
+                    gender: '', 
+                    phoneNumber: '', 
+                    email: '', 
+                    medicalConditions: '',
+                    wapScore: '',
+                    pastApplications: ''
+}
+  const [inputs, setInputs] = useState(initstate)
+
+    useEffect( () => {
+        getUsers()
+    }, [])
+
+    const getUsers = () => {
+      firebase.db.collection('covid-19 vaccine queue').get()
+        .then(querySnapshot => {
+        querySnapshot.forEach( doc => {
+          //prints the data in the database to the console
+          console.log(`${doc.id} => ${JSON.stringify(doc.data())}`)
+          setUser(prev => ([...prev, doc.data()]))
+        })
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+    }
+
+
+    const sendUserInfo = async (e) => {
+      e.preventDefault()
+      await firebase.db.collection('covid-19 vaccine queue').add(inputs)
+      .then( async documentReference => {
+        console.log('User ID', documentReference.id)
+        await setUser([])
+
+        getUsers()
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+  }
+
+  const handleChange = e => {
+    const {name, value} = e.target
+    setInputs(prev => ({...prev, [name]: value}))
+  }
+
   return (
   <Card small className="mb-4">
     <CardHeader className="border-bottom">
@@ -55,7 +107,7 @@ const UserAccountDetails = ({ title }) => {
       <ListGroupItem className="p-3">
         <Row>
           <Col>
-            <Form>
+            <Form onSubmit={sendUserInfo}>
               <Row form>
                 {/* First Name */}
                 <Col md="6" className="form-group">
@@ -63,9 +115,9 @@ const UserAccountDetails = ({ title }) => {
                   <FormInput
                     id="feFirstName"
                     placeholder="First Name"
-                    value={firstName}
+                    value={inputs.firstName}
                     name="firstName"
-                    onChange={(event) => {onChangeHandler(event)}}
+                    onChange={handleChange}
                   />
                 </Col>
                 {/* Last Name */}
@@ -74,9 +126,9 @@ const UserAccountDetails = ({ title }) => {
                   <FormInput
                     id="feLastName"
                     placeholder="Last Name"
-                    value={lastName}
+                    value={inputs.lastName}
                     name="lastName"
-                    onChange={(event) => {onChangeHandler(event)}}
+                    onChange={handleChange}
                   />
                 </Col>
               </Row>
@@ -88,9 +140,9 @@ const UserAccountDetails = ({ title }) => {
                     type="email"
                     id="feEmail"
                     placeholder="Email Address"
-                    value={email}
+                    value={inputs.email}
                     name="email"
-                    onChange={(event) => {onChangeHandler(event)}}
+                    onChange={handleChange}
                   />
                 </Col>
                 {/* Password */}
