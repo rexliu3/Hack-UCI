@@ -36,7 +36,6 @@ const marks = [
 
 const userDetails = {
   name: "Charles Liu",
-  avatar: require("./../../images/avatars/0.jpg"),
   jobTitle: "Vulnerable Population",
   performanceReportTitle: "Vaccination Priority",
   performanceReportValue: 74,
@@ -107,24 +106,4 @@ const UserDetails = (props ) => {
   </Card>
 )
 };
-
-<<<<<<< HEAD
-
-=======
-UserDetails.defaultProps = {
-  userDetails: {
-    name: "Charles Liu",
-    avatar: require("./../../images/avatars/0.png"),
-    jobTitle: "Vulnerable Population",
-    performanceReportTitle: "Vaccination Priority",
-    performanceReportValue: 74,
-    performanceReportTitle2: "Estimated Time of Vaccination",
-    performanceReportValue2: 4,
-    metaTitle: "Description",
-    metaValue:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
-  }
-};
->>>>>>> 77cbd3349b7212049ce161487a8709be6d941c72
-
 export default UserDetails;
