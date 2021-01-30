@@ -28,11 +28,33 @@ const getCovidCases = async () => {
 
 //getCovidCases();
 
+var count = 0;
 
-// Data to retrieve: 
-//      Keyword search frequency by state
-//          loss of taste, fever, covid
+// returns a list of regions & frequency of keyword search (interest rate)
 const getKeywordFrequencyByState = async () => {
-    const keywords = ["loss of taste covid", "fever covid", "covid"];
-
+    const keywords = ["loss of taste covid"];
+    // , "fever covid", "covid"
+    keywords.forEach(keyword => {
+        googleTrends.interestByRegion({ keyword: keyword, startTime: new Date('2021-01-27'), geo: 'US', resolution: 'REGION' })
+            .then((res) => {
+                const data = JSON.parse(res)['default']['geoMapData'];
+                data.forEach(state => {
+                    console.log(state['geoCode']);
+                    console.log(state['geoName']);
+                    console.log(state['value']);
+                    console.log("-----------");
+                    count += 1;
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    })
 }
+
+const doStuff = async () => {
+    await getKeywordFrequencyByState();
+    console.log(count)
+}
+
+doStuff()
