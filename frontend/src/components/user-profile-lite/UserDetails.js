@@ -42,7 +42,6 @@ const UserDetails = ({ userDetails }) => (
         </div>
         <Slider
         defaultValue={10}
-        getAriaValueText={5}
         aria-labelledby="discrete-slider-small-steps"
         step={10}
         marks
