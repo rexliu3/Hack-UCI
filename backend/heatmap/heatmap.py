@@ -92,38 +92,37 @@ class Heatmap:
         df["Name"] = df["Name"].apply(parse_county)
         df.columns = ["State", "PVI"]
 
+        # Aggregate data by state
+        df = df.groupby("State").mean().reset_index()
+
         return df
 
 
+    def get_heatmap(self):
+        df = self.get_pvi_df()
 
+        fig = px.choropleth(df, locations=df["State"].tolist(), locationmode="USA-states", color=df["PVI"].tolist(), scope="usa",
+                labels={'PVI':'Pandemic Vulnerability Index'},
+                range_color=(0, 1),
+                title="Pandemic Vulnerability Index"
+        )
 
-    # with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-    #     counties = json.load(response)
-    # 
-    # counties["features"][0]
-    # 
-    # df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
-    #                    dtype={"fips": str})
-    # df.head()
-    # 
-    # import json
-    # with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-    #     counties = json.load(response)
-    # 
-    # df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
-    #                    dtype={"fips": str})
-    # 
-    # 
-    # fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
-    #                            color_continuous_scale="Viridis",
-    #                            range_color=(0, 12),
-    #                            scope="usa",
-    #                            labels={'unemp':'vaccination density'}
-    #                           )
-    # fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    # fig.show()
+        fig.show()
+
+        # fig = px.choropleth(df, locationmode='USA-states', 
+        #                            color_continuous_scale="Viridis",
+        #                            range_color=(0, 12),
+        #                            featureidkey="PVI",
+        #                            scope="usa",
+        #                            labels={'PVI':'Pandemic Vulnerability Index'}
+        #                           )
+        # fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        # fig.show()
+
 
 if __name__ == "__main__":
     hm = Heatmap()
-    print(hm.get_pvi_df().head())
+
+    # print(hm.get_pvi_df().sort_values("PVI"))
+    hm.get_heatmap()
 
