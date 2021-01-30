@@ -1,5 +1,7 @@
 from urllib.request import urlopen
 import json
+import sys
+
 import pandas as pd
 
 import plotly.express as px
@@ -117,7 +119,14 @@ class Heatmap:
 
 
 if __name__ == "__main__":
-    hm = Heatmap()
-    print(hm.get_pvi_df("20210129").sort_values("PVI"))
+    if len(sys.argv) > 2:
+        print("ERROR: Too many arguments! Format: $ python3 heatmap.py <YYYYMMDD>")
+    else:
+        hm = Heatmap()
+        # print(hm.get_pvi_df("20210129").sort_values("PVI"))
 
-    hm.get_heatmap_by_date()
+        date = "20210129"
+        if len(sys.argv) > 1:
+            date = sys.argv[1]
+
+        hm.get_heatmap_by_date(date)
