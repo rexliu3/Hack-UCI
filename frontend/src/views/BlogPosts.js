@@ -138,7 +138,7 @@ class BlogPosts extends React.Component {
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title="Covid-19 News" subtitle="Stories" className="text-sm-left" />
+          <PageTitle sm="4" title="Learn About Covid-19 " subtitle="Education" className="text-sm-left" />
         </Row>
 
         {/* First Row of Posts */}

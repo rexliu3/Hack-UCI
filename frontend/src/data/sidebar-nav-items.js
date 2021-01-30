@@ -12,9 +12,9 @@ export default function() {
       to: "/submit-appeal",
     },
     {
-      title: "Covid-19 News",
+      title: "Learn About Covid-19",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/news",
+      to: "/education",
     },
     
     {
@@ -33,9 +33,9 @@ export default function() {
       to: "/user-profile-lite",
     },
     {
-      title: "Errors",
-      htmlBefore: '<i class="material-icons">error</i>',
-      to: "/errors",
+      title: "FAQ & Help",
+      htmlBefore: '<i class="material-icons">live_help</i>',
+      to: "/faq",
     },
   ];
 }

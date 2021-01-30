@@ -12,6 +12,7 @@ import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
+import FAQ from "./views/FAQ";
 
 import LandingPage from "./pages/LandingPage"
 
@@ -54,8 +55,13 @@ export default [
     component: Tables
   },
   {
-    path: "/news",
+    path: "/education",
     layout: DefaultLayout,
     component: BlogPosts
+  },
+  {
+    path:"/faq",
+    layout: DefaultLayout,
+    component: FAQ
   }
 ];

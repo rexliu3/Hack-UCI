@@ -9,7 +9,30 @@ import {
   Progress
 } from "shards-react";
 
-import Slider from '@material-ui/core/Slider';
+import Slider from "@material-ui/core/Slider";
+
+const marks = [
+  {
+    value: 0,
+    label: 'Vaccination',
+  },
+  {
+    value: 25,
+    label: '25 Days',
+  },
+  {
+    value: 50,
+    label: '50 Days',
+  },
+  {
+    value: 75,
+    label: '75 Days',
+  },
+  {
+    value: 100,
+    label: '100 Days Left',
+  },
+];
 
 const UserDetails = ({ userDetails }) => (
   <Card small className="mb-4 pt-3">
@@ -40,15 +63,20 @@ const UserDetails = ({ userDetails }) => (
             </span>
           </Progress>
         </div>
-        <Slider
-        defaultValue={10}
-        aria-labelledby="discrete-slider-small-steps"
-        step={10}
-        marks
-        min={0}
-        max={100}
-        valueLabelDisplay="auto"
-      />
+        <div className="progress-wrapper" style={{marginTop: '2vw'}}>
+          <strong className="text-muted d-block mb-2">
+            {userDetails.performanceReportTitle2}
+          </strong>
+          <Slider
+            defaultValue={userDetails.performanceReportValue2}
+            aria-labelledby="discrete-slider-always"
+            step={10}
+            disabled='true'
+            marks={marks}
+            valueLabelDisplay="on"
+            style={{width:'80%', marginLeft: '2vw', marginTop:'1.2vw'}}
+          />
+        </div>
       </ListGroupItem>
       {/*<ListGroupItem className="p-4">
         <strong className="text-muted d-block mb-2">
@@ -74,8 +102,8 @@ UserDetails.defaultProps = {
     jobTitle: "Vulnerable Population",
     performanceReportTitle: "Vaccination Priority",
     performanceReportValue: 74,
-    performanceReport2: "Estimated Time of Vaccination",
-    performanceReport2: 4,
+    performanceReportTitle2: "Estimated Time of Vaccination",
+    performanceReportValue2: 4,
     metaTitle: "Description",
     metaValue:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
