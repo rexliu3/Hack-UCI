@@ -1,5 +1,14 @@
 .main {
     display: grid;
     grid-template-columns: auto auto;
+    margin: auto;
     
+    &__button {
+        background: transparent;
+        border-radius: 5px;
+        height: 3rem;
+        width: 10rem;
+        margin: 0.5rem;
+        border-width: 1.5px;
+    }
 }

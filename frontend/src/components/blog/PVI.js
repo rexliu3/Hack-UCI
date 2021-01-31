@@ -23,42 +23,33 @@ class PVI extends React.Component {
     this.canvasRef = React.createRef();
   }
 
-  componentDidMount() {
-    const chartConfig = {
-      type: "pie",
-      data: this.props.chartData,
-      options: {
-        ...{
-          legend: {
-            position: "bottom",
-            labels: {
-              padding: 25,
-              boxWidth: 20
-            }
-          },
-          cutoutPercentage: 0,
-          tooltips: {
-            custom: false,
-            mode: "index",
-            position: "nearest"
-          }
-        },
-        ...this.props.chartOptions
-      }
-    };
-
-    new Chart(this.canvasRef.current, chartConfig);
-  }
-
   render() {
+    const months = [
+      {month: 'February 2020', url: ''},
+      {month: 'March 2020', url: ''},
+      {month: 'April 2020', url: ''},
+      {month: 'May 2020', url: ''},
+      {month: 'June 2020', url: ''},
+      {month: 'July 2020', url: ''},
+      {month: 'August 2020', url: ''},
+      {month: 'September 2020', url: ''},
+      {month: 'October 2020', url: ''},
+      {month: 'November 2020', url: ''},
+      {month: 'December 2020', url: ''},
+      {month: 'January 2021', url: ''},
+    ]
     return (
       <Card small className="h-100">
         <CardHeader className="border-bottom">
-          <h6 className="m-0">Pandemic Vulnerability Index</h6>
+          <h6 className="m-0">Pandemic Vulnerability Index Interactive Heatmaps</h6>
         </CardHeader>
         <CardBody className="d-flex py-0">
           <div className="main">
-            <Button></Button>
+            {months.map(one =>
+            <a href={one.url}>
+              <button className="main__button">{one.month}</button>
+              </a>
+              )}
           </div>
         </CardBody>
         <CardFooter className="border-top">
