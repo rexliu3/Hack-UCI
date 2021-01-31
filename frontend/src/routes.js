@@ -10,7 +10,6 @@ import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
 import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
-import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
 import FAQ from "./views/FAQ";
 
@@ -48,11 +47,6 @@ export default [
     path: "/components-overview",
     layout: DefaultLayout,
     component: ComponentsOverview
-  },
-  {
-    path: "/tables",
-    layout: DefaultLayout,
-    component: Tables
   },
   {
     path: "/education",
