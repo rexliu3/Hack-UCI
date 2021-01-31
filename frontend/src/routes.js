@@ -12,6 +12,7 @@ import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import BlogPosts from "./views/BlogPosts";
 import FAQ from "./views/FAQ";
+import HeatMap from "./views/HeatMap";
 
 import LandingPage from "./pages/LandingPage"
 
@@ -54,8 +55,13 @@ export default [
     component: BlogPosts
   },
   {
-    path:"/faq",
+    path: "/faq",
     layout: DefaultLayout,
     component: FAQ
+  },
+  {
+    path: "/heatmap",
+    layout: DefaultLayout,
+    component: HeatMap
   }
 ];
