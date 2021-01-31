@@ -92,9 +92,11 @@ const UserDetails = (props) => {
               Apply for Priority Vaccination
           </Button>
           </a>
-          <Button outline color='secondary' style={{ display: 'inline', margin: '0.5vw auto', float: 'right' }} onClick={() => { auth.signOut() }}>
-            Sign Out
-          </Button>
+          <a href="/">
+            <Button outline color='secondary' style={{ display: 'inline', margin: '0.5vw auto', float: 'right' }} onClick={() => { auth.signOut() }}>
+              Sign Out
+            </Button>
+          </a>
         </ListGroupItem>
         {/*<ListGroupItem className="p-4">
         <strong className="text-muted d-block mb-2">

@@ -59,7 +59,6 @@ const UserAccountDetails = props => {
       .doc(uid)
       .get()
       .then(function(doc) {
-        console.log(doc.data());
         setCurrentUser(doc.data());
         setInputs(prev => ({
           ...prev,
