@@ -1,4 +1,4 @@
-export default function() {
+export default function () {
   return [
     {
       title: "Dashboard",
@@ -11,14 +11,14 @@ export default function() {
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/education",
     },
-    
+
     {
       title: "Forms & Components",
       htmlBefore: '<i class="material-icons">view_module</i>',
       to: "/components-overview",
     },
     {
-      title: "User Profile",
+      title: "My Profile",
       htmlBefore: '<i class="material-icons">person</i>',
       to: "/user-profile-lite",
     },
