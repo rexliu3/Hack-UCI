@@ -1,11 +1,16 @@
+var func = require("./data-retrieval");
+
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser");
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/search-frequency-data", function (req, res) {
-    res.send("hello")
+app.get("/update-data", function (req, res) {
+    func.getCovidCases();
+    func.getKeywordFrequencyByState();
+    res.send("data updated.")
 })
 
 
