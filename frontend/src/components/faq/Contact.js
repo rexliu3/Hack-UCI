@@ -28,17 +28,9 @@ const Contact = ({ title }) => {
             </span>
             <span className="d-flex mb-2">
               <i className="material-icons mr-1">web</i>
-              <strong className="mr-1">Website:</strong>{" "}
+              <strong className="mr-1">Website:</strong>{"accelerator.com"}
             </span>
           </ListGroupItem>
-          {/*<ListGroupItem className="d-flex px-3 border-0">
-            <Button outline theme="accent" size="sm">
-              <i className="material-icons">save</i> Save Draft
-            </Button>
-            <Button outline theme="accent" size="sm" className="ml-auto" >
-              <i className="material-icons">file_copy</i> Email
-            </Button>
-  </ListGroupItem>*/}
         </ListGroup>
       </CardBody>
     </Card>

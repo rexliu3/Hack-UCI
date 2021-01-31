@@ -46,8 +46,8 @@ const Questions = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}>General settings</Typography>
-          <Typography className={classes.secondaryHeading}>I am an accordion</Typography>
+          <Typography className={classes.heading}>How is this data tracked?</Typography>
+          <Typography className={classes.secondaryHeading}></Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -62,15 +62,13 @@ const Questions = () => {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}>Users</Typography>
+          <Typography className={classes.heading}>Where is this data coming from?</Typography>
           <Typography className={classes.secondaryHeading}>
-            You are currently not an owner
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-            diam eros in elit. Pellentesque convallis laoreet laoreet.
+          The data displayed is taken from government sites such as the U.S. Department of Health and Human Services.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -80,9 +78,9 @@ const Questions = () => {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}>Advanced settings</Typography>
+          <Typography className={classes.heading}>How is the vaccine priority determined?</Typography>
           <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
+            Information from government research and rollout plans 
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -98,7 +96,7 @@ const Questions = () => {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}>Personal data</Typography>
+          <Typography className={classes.heading}>How is the WAP score calculated?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
