@@ -140,7 +140,7 @@ class UsersOverview extends React.Component {
         </CardHeader>
         <CardBody className="pt-0">
           <canvas
-            height="120"
+            height="100"
             style={{ maxWidth: "100% !important" }}
             ref={this.canvasRef}
             onClick={myFunction()}
