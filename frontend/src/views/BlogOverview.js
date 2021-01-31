@@ -8,6 +8,7 @@ import UsersOverview from "./../components/blog/UsersOverview";
 import UsersByDevice from "./../components/blog/UsersByDevice";
 
 import CasesByState from "./../components/blog/CasesByState";
+import PVI from "./../components/blog/PVI";
 
 const BlogOverview = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
@@ -36,20 +37,21 @@ const BlogOverview = ({ smallStats }) => (
     </Row>
 
     <Row>
-      {/* Users Overview */}
+      
       <Col lg="8" md="12" sm="12" className="mb-4">
-        <UsersOverview />
+        <CasesByState />
       </Col>
-      {/* Users by Device */}
       <Col lg="4" md="6" sm="12" className="mb-4">
-        <UsersByDevice />
+        <PVI />
       </Col>
     </Row>
 
     <Row>
-      {/* Users Overview */}
-      <Col lg="12" md="12" sm="12" className="mb-4">
-        <CasesByState />
+    <Col lg="4" md="6" sm="12" className="mb-4">
+        <UsersByDevice />
+      </Col>
+    <Col lg="8" md="12" sm="12" className="mb-4">
+        <UsersOverview />
       </Col>
     </Row>
     
