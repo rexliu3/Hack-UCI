@@ -8,6 +8,7 @@ import {
   ListGroupItem,
   Progress
 } from "shards-react";
+import {auth} from "../../firebase/index.js";
 
 import Slider from "@material-ui/core/Slider";
 
@@ -54,7 +55,7 @@ const UserDetails = (props ) => {
       <div className="mb-3 mx-auto">
         <img
           className="rounded-circle"
-          src={data.photo}
+          src={data.photoURL}
           width="110"
         />
       </div>
@@ -95,6 +96,9 @@ const UserDetails = (props ) => {
             Submit Appeal
           </Button>
         </a>
+        <Button outline color='secondary' style={{display: 'flex', margin:'0.5vw auto'}} onClick={()=> {auth.signOut()}}>
+            Sign Out
+          </Button>
       </ListGroupItem>
       {/*<ListGroupItem className="p-4">
         <strong className="text-muted d-block mb-2">
