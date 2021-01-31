@@ -111,7 +111,8 @@ const UserAccountDetails = props => {
       //wapScore: inputs.wapScore,
       //pastApplications: inputs.pastApplications
     };
-    console.log(updated_data)
+    
+
 
     for (var key in updated_data) {
       if (updated_data[key] == undefined || updated_data[key] == null || updated_data[key] == '') {
@@ -139,6 +140,7 @@ const UserAccountDetails = props => {
           console.error("Error", error);
         });
     }
+    location.reload();
   };
 
   useEffect(() => {

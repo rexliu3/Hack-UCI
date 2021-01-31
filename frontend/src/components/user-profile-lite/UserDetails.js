@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -11,6 +11,8 @@ import {
 import { auth } from "../../firebase/index.js";
 
 import Slider from "@material-ui/core/Slider";
+import firebase from "../../firebase/index";
+
 
 const marks = [
   {
@@ -45,6 +47,53 @@ const userDetails = {
 
 const UserDetails = (props) => {
   const { data } = props;
+
+  const [prio, setPrio] = useState(100);
+  const [eta, setEta] = useState(100);
+
+  function calculateWAP(age, healthWorker, careWorker, essentialWorker, pregnant) {
+    if (healthWorker) {
+      healthWorker = 1
+    } else {
+      healthWorker = 0
+    }
+    if (careWorker) {
+      careWorker = 1
+    } else {
+      careWorker = 0
+    }
+    if (essentialWorker) {
+      essentialWorker = 1
+    } else {
+      essentialWorker = 0
+    }
+    if (pregnant) {
+      pregnant = 1
+    } else {
+      pregnant = 0
+    }
+
+    let elderly = 0
+    if (age >= 65) {
+      elderly = 1
+    } 
+    return 2 * elderly + 3 * healthWorker + 2 * careWorker + essentialWorker - 2 * pregnant + age / 65;
+  }
+
+  useEffect(() => {
+    firebase.db
+    .collection("users")
+    .doc(data.uid)
+    .get()
+    .then(function(doc) {
+      setPrio(calculateWAP(doc.data().age, doc.data().health, doc.data().care, doc.data().essential, doc.data().pregnant)*10)
+      setEta(Math.round((5 / Math.max(calculateWAP(doc.data().age, doc.data().health, doc.data().care, doc.data().essential, doc.data().pregnant), 1))  * 12))
+    })
+    .catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+  }, []);
+
   return (
     <Card small className="mb-4 pt-3">
       <CardHeader className="border-bottom text-center">
@@ -66,10 +115,11 @@ const UserDetails = (props) => {
             </strong>
             <Progress
               className="progress-sm"
-              value={userDetails.performanceReportValue}
+              defaultValue={userDetails.performanceReportValue}
+              value={prio}
             >
               <span className="progress-value">
-                {userDetails.performanceReportValue}%
+                {Math.round(prio)}%
             </span>
             </Progress>
           </div>
@@ -79,6 +129,7 @@ const UserDetails = (props) => {
             </strong>
             <Slider
               defaultValue={userDetails.performanceReportValue2}
+              value={eta}
               aria-labelledby="discrete-slider-always"
               step={10}
               disabled='true'
@@ -98,12 +149,6 @@ const UserDetails = (props) => {
             </Button>
           </a>
         </ListGroupItem>
-        {/*<ListGroupItem className="p-4">
-        <strong className="text-muted d-block mb-2">
-          {userDetails.metaTitle}
-        </strong>
-        <span>{userDetails.metaValue}</span>
-</ListGroupItem>*/}
       </ListGroup>
     </Card>
   )
