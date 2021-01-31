@@ -52,9 +52,4 @@ const getKeywordFrequencyByState = async () => {
     })
 }
 
-const doStuff = async () => {
-    await getKeywordFrequencyByState();
-    console.log(count)
-}
-
-doStuff()
+getKeywordFrequencyByState();
