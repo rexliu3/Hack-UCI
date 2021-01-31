@@ -116,7 +116,10 @@ class UsersOverview extends React.Component {
               data: vaccinations_data, //[10, 20, 30, 40],
               backgroundColor: 'orange',
               borderColor: 'orange',
-              borderWidth: 1
+              fill: false,
+              borderWidth: 1,
+              pointRadius: 3,
+              pointHoverRadius: 6,
             },
           ],
           labels: labes
