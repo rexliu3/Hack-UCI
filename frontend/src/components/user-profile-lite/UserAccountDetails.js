@@ -16,50 +16,25 @@ import {
 } from "shards-react";
 import firebase from "../../firebase/index";
 
-const UserAccountDetails = (props) => {
-  const {data} = props;
-
-  /*const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [address, setAddress] = React.useState("");
-  const [city, setCity] = React.useState("");
-  const [state, setState] = React.useState("");
-  const [medical, setMedical] = React.useState("");
-
-  const onChangeHandler = event => {
-    const { name, value } = event.currentTarget;
-    if (name === "firstName") {
-      setFirstName(value);
-    } else if (name === "lastName") {
-      setLastName(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "phone") {
-      setPhone(value);
-    } else if (name === "address") {
-      setAddress(value);
-    } else if (name === "city") {
-      setCity(value);
-    } else if (name === "state") {
-      setState(value);
-    } else if (name === "medical") {
-      setMedical(value);
-    }
-  };*/
-
+const UserAccountDetails = props => {
+  const { data } = props;
   const [users, setUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
+  const [error, setError] = useState(false);
+  const [updated, setUpdated] = useState(false);
 
-  const split_name = (full_name) => {
-      for (let i = 0; i < full_name.length; i += 1) {
-        if (full_name[i] == ' ') {
-            let returner = [full_name.slice(0, i), full_name.slice(i+1, full_name.length)]
-            return returner
-        }
+  const split_name = full_name => {
+    for (let i = 0; i < full_name.length; i += 1) {
+      if (full_name[i] == " ") {
+        let returner = [
+          full_name.slice(0, i),
+          full_name.slice(i + 1, full_name.length)
+        ];
+        return returner;
       }
-      return [full_name, '']
-  }
+    }
+    return [full_name, ""];
+  };
 
   const initstate = {
     firstName: split_name(data.displayName)[0],
@@ -74,10 +49,85 @@ const UserAccountDetails = (props) => {
     wapScore: "",
     pastApplications: ""
   };
+
   const [inputs, setInputs] = useState(initstate);
 
+  // Get a Specific User from Firebase
+  const getSpecificUser = async uid => {
+    firebase.db
+      .collection("users")
+      .doc(uid)
+      .get()
+      .then(function(doc) {
+        console.log(doc.data());
+        setCurrentUser(doc.data());
+        setInputs(prev => ({
+          ...prev,
+          firstName: split_name(doc.data().displayName)[0],
+          lastName: split_name(doc.data().displayName)[1],
+          age: doc.data().age,
+          email: doc.data().email,
+          phone: doc.data().phone,
+          address: doc.data().address,
+          city: doc.data().city,
+          state: doc.data().state,
+          medicalConditions: doc.data().medicalConditions,
+          wapScore: doc.data().wapScore,
+          pastApplications: doc.data().pastApplications,
+          photoURL: doc.data().photoURL
+        }));
+      })
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+  };
+
+  const updateSpecificUser = async => {
+    const updated_data = {
+      displayName: inputs.firstName + " " + inputs.lastName,
+      age: inputs.age,
+      email: inputs.email,
+      phone: inputs.phone,
+      address: inputs.address,
+      city: inputs.city,
+      state: inputs.state,
+      medicalConditions: inputs.medicalConditions,
+      photoURL: inputs.photoURL
+      //wapScore: inputs.wapScore,
+      //pastApplications: inputs.pastApplications
+    };
+
+    let any = false;
+    for (var key in updated_data) {
+      if (updated_data[key] == undefined || updated_data[key] == null) {
+        any = true;
+      }
+    }
+
+    if (any) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+
+    if (!error) {
+      firebase.db
+        .collection("users")
+        .doc(data.uid)
+        .set(updated_data)
+        .then(function() {
+          console.log("Success");
+          setUpdated(true);
+        })
+        .catch(function(error) {
+          console.error("Error", error);
+        });
+    }
+  };
+
   useEffect(() => {
-    getUsers();
+    //getUsers();
+    getSpecificUser(data.uid);
   }, []);
 
   const getUsers = () => {
@@ -216,16 +266,20 @@ const UserAccountDetails = (props) => {
                 <Row form>
                   <Col md="12" className="form-group">
                     <label htmlFor="feDescription">Medical Conditions</label>
-                    <FormTextarea 
+                    <FormTextarea
                       id="feMedicalCondition"
                       placeholder=""
                       value={inputs.medicalConditions}
                       name="medicalConditions"
                       onChange={handleChange}
-                      rows="5" />
+                      rows="5"
+                    />
                   </Col>
                 </Row>
-                <Button>Update Account</Button>
+                <Button onClick={inputs => updateSpecificUser(inputs)}>
+                  Update Account
+                </Button>
+                {updated && <p style={{margin: '0.5rem 0 0 0'}}>Your Account Information has been Updated</p>}
               </Form>
             </Col>
           </Row>
