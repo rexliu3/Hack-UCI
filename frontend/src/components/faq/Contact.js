@@ -22,6 +22,8 @@ const Contact = ({ title }) => {
       <CardBody className="p-0">
         <ListGroup flush>
           <ListGroupItem className="p-3">
+          <span className="d-flex mb-2">
+            </span>
             <span className="d-flex mb-2">
               <i className="material-icons mr-1">phone</i>
               <strong className="mr-1">Phone Number:</strong> 233-232-2329
