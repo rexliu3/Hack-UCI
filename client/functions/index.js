@@ -6,20 +6,6 @@ const accountSid = 'ACa40f5971b49ccec2f1f306a01990536c';
 const authToken = '251f842caba8e3844d0772d7e83c6fcb';
 const twilioNumber = '+16042006992';
 
-
-const message = {
-    body: 'Hello',
-    to: '+17789575430',
-    from: twilioNumber
-}
-
-
-exports.sayHello = functions.https.onCall((data, context) => {
-    const client = require('twilio')(accountSid, authToken);
-    client.messages.create(message).then(message => console.log('success'));
-    return 'nice'
-});
-
 exports.sayHey = functions.firestore
     .document("covid-19 vaccine queue/{id}")
     .onCreate((snap, context) => {
@@ -27,7 +13,9 @@ exports.sayHey = functions.firestore
         const name = entry.firstName;
         const number = entry.phone;
         const text = {
-            body: `\nHi ${name},\nThis is a reminder that your vaccination scheduled for February 3rd is coming up in 4 days! We hope you're staying positive and testing negative. We look forward to having you.\nVaccelerator`,
+            body: `Hi ${name},
+            This is a reminder that your vaccination scheduled for February 3rd is coming up in 4 days! We hope you're staying positive and testing negative. We look forward to having you.
+            Vaccelerator`,
             to: number,
             from: twilioNumber
         }
@@ -41,12 +29,7 @@ exports.calculateWAP = functions.firestore
     .onWrite((change, context) => {
         const user = change.after.data();
         if (user) {
-            const age = user.age;
-            const healthWorker = user.healthWorker;
-            const careWorker = user.careWorker;
-            const essentialWorker = user.essentialWorker;
-            const pregnant = user.pregnant;
-            const newWAP = calculateWAP(age, healthWorker, careWorker, essentialWorker, pregnant);
+            const newWAP = calculateWAP(user.age, user.healthWorker, user.careWorker, user.essentialWorker, user.pregnant);
             if (newWAP === user.WAP) {
                 console.log("nothing to do");
                 return null;
@@ -57,17 +40,13 @@ exports.calculateWAP = functions.firestore
         }
     });
 
-function calculateWAP(age, healthWorker, careWorker, essentialWorker, pregnant) {
-    const elderly = age >= 65;
-    return 2 * elderly + 3 * healthWorker + 2 * careWorker + essentialWorker - 2 * pregnant + age / 65;
-}
-
 exports.calculateETA = functions.firestore
     .document("covid-19 vaccine queue/{id}")
     .onWrite((change, context) => {
         const user = change.after.data();
+
         if (user) {
-            const newETA = Math.round((5 / Math.max(user.WAP, 1))  * 12);
+            const newETA = calculateETA(user.WAP);
             if (newETA === user.ETA) {
                 console.log("nothing to do");
                 return null;
@@ -77,3 +56,33 @@ exports.calculateETA = functions.firestore
             return null;
         }
     });
+
+exports.calculatePriority = functions.firestore
+    .document("covid-19 vaccine queue/{id}")
+    .onWrite((change, context) => {
+        const user = change.after.data();
+
+        if (user) {
+            const newPriority = calculatePriority(user.WAP);
+            if (newPriority === user.priority) {
+                console.log("nothing to do");
+                return null;
+            }
+            return change.after.ref.update({priority: newPriority})
+        } else {
+            return null;
+        }
+    });
+
+function calculateWAP(age, healthWorker, careWorker, essentialWorker, pregnant) {
+    const elderly = age >= 65;
+    return 2 * elderly + 3 * healthWorker + 2 * careWorker + essentialWorker - 2 * pregnant + age / 65;
+}
+
+function calculateETA(WAP) {
+    return Math.round((5 / Math.max(WAP, 1))  * 20);
+}
+
+function calculatePriority(WAP) {
+    return Math.round((Math.min(7, WAP) / 7) * 100);
+}
