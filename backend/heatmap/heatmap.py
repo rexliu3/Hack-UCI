@@ -1,6 +1,7 @@
 from urllib.request import urlopen
 import json
 import sys
+from datetime import datetime, timedelta
 
 import pandas as pd
 
@@ -73,19 +74,42 @@ class Heatmap:
             'Wyoming': 'WY'
         }
 
+    def get_batch_pvi(self):
+        res = pd.DataFrame(columns=["State", "PVI", "Day"])
+
+        start_date = datetime(2020, 2, 29)
+        end_date = datetime(2021, 1, 29)
+
+        i = 1
+        while start_date < end_date:
+            cur_df = self.get_pvi_df(start_date.strftime("%Y%m%d"))
+            cur_df["Day"] = i
+
+            res = pd.concat([res, cur_df], ignore_index=False)
+
+            if i % 10 == 0:
+                print(start_date)
+
+            start_date += timedelta(1)
+            i += 1
+
+        return res
+
 
     # Shows heatmap with latest available data.
-    def get_heatmap_by_date(self, date="20210129"):
-        df = self.get_pvi_df(date)
+    def get_heatmap(self):
+        df = self.get_batch_pvi()
 
         fig = px.choropleth(df, locations=df["State"].tolist(), locationmode="USA-states", 
                 color_continuous_scale=self.color_scheme,
+                animation_frame=df["Day"].tolist(),
                 color=df["PVI"].tolist(), 
                 scope="usa",
                 range_color=(0.2, 0.6),
                 title="Pandemic Vulnerability Index - {}".format(date)
         )
 
+        fig.update_layout(transition = {'duration': 10})
         fig.show()
 
 
@@ -123,10 +147,9 @@ if __name__ == "__main__":
         print("ERROR: Too many arguments! Format: $ python3 heatmap.py <YYYYMMDD>")
     else:
         hm = Heatmap()
-        # print(hm.get_pvi_df("20210129").sort_values("PVI"))
 
         date = "20210129"
         if len(sys.argv) > 1:
             date = sys.argv[1]
 
-        hm.get_heatmap_by_date(date)
+        hm.get_heatmap()
