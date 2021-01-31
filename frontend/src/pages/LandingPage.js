@@ -10,7 +10,6 @@ const LandingPage = () => {
             <div className='title logo'>
                 <img style={{ top: "1px", width: "10em", padding: "1px 1px" }} src={logo}></img>
             </div>
-            {/* <div className='title item'>Vaccelerator</div> */}
             <div className='item'>
                 <a style={{ textDecoration: 'none' }} href="/faq">Contact</a>
             </div>

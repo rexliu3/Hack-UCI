@@ -136,7 +136,7 @@ const UserAccountDetails = props => {
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           //prints the data in the database to the console
-          console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+          // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
           setUser(prev => [...prev, doc.data()]);
         });
       })

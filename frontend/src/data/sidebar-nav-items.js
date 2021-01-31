@@ -12,11 +12,11 @@ export default function () {
       to: "/education",
     },
 
-    {
-      title: "Forms & Components",
-      htmlBefore: '<i class="material-icons">view_module</i>',
-      to: "/components-overview",
-    },
+    // {
+    //   title: "Forms & Components",
+    //   htmlBefore: '<i class="material-icons">view_module</i>',
+    //   to: "/components-overview",
+    // },
     {
       title: "My Profile",
       htmlBefore: '<i class="material-icons">person</i>',
