@@ -1,15 +1,17 @@
-import firebase from 'firebase'
+import dotenv from 'dotenv'
+import firebase from "firebase"
 import 'firebase/firestore'
+dotenv.config()
 
 firebase.initializeApp({
-    apiKey: "AIzaSyBtmmlfbbVOYfwL5sTJtPx6zyuRpl34CKc",
-    authDomain: "hackuci-ac4d9.firebaseapp.com",
-    projectId: "hackuci-ac4d9",
-    storageBucket: "hackuci-ac4d9.appspot.com",
-    messagingSenderId: "959798035499",
-    appId: "1:959798035499:web:dad26188af2e93eb6d166e",
-    measurementId: "G-C6SP7N9SFR"
-});
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId:  process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
+})
 
 let db = firebase.firestore()
 let auth = firebase.auth()

@@ -12,8 +12,6 @@ main {
     
     background: #FFFFFF;
     color: #000000;
-    /* font-family: Roboto;
-    font-weight: 600; */
 }
 
 .title {
@@ -23,32 +21,36 @@ main {
 }
 
 .item {
-    padding: 16px 16px;
+    padding: 16px 20px;
     cursor: pointer;
     vertical-align: middle;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .navButton {
     color: black;
     background: #F3F1FF;
     border-radius: 2px;
+    margin-left: 16px;
+}
+
+.container {
+    display: flex;
 }
 
 .backgroundImg {
     position: absolute;
-    width: 990px;
-    height: 655px;
-    left: 440px;
+    width: 70%;
+    height: 90%;
+    left: 30%;
     top: 80px;
-    /* background: url(covid-19-coronavirus-lab.png); */
 }
 
 .bigTitle {
     position: absolute;
-    width: 600px;
-    height: 200px;
-    left: 90px;
+    width: 70%;
+    height: 10%;
+    left: 5%;
     top: 300px;
     font-size: 90px;
 
@@ -57,17 +59,17 @@ main {
 
 .description {
     position: absolute;
-    width: 519px;
-    height: 128px;
-    left: 120px;
-    top: 380px;
+    width: 30%;
+    height: 10%;
+    left: 8%;
+    top: 385px;
 
     color: #000000;
 }
 
 .dashboard {
     position: absolute;
-    left: 230px;
+    left: 195px;
     top: 430px;
-    size:'lg';
+    font-weight: 500;
 }
