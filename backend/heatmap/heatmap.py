@@ -77,7 +77,7 @@ class Heatmap:
     def get_batch_pvi(self):
         res = pd.DataFrame(columns=["State", "PVI", "Day"])
 
-        start_date = datetime(2020, 2, 29)
+        start_date = datetime(2021, 1, 1)
         end_date = datetime(2021, 1, 29)
 
         i = 1
@@ -86,9 +86,6 @@ class Heatmap:
             cur_df["Day"] = i
 
             res = pd.concat([res, cur_df], ignore_index=False)
-
-            if i % 10 == 0:
-                print(start_date)
 
             start_date += timedelta(1)
             i += 1
@@ -145,6 +142,7 @@ class Heatmap:
 if __name__ == "__main__":
     if len(sys.argv) > 2:
         print("ERROR: Too many arguments! Format: $ python3 heatmap.py <YYYYMMDD>")
+
     else:
         hm = Heatmap()
 
