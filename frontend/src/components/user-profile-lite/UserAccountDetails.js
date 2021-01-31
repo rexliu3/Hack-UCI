@@ -114,7 +114,7 @@ const UserAccountDetails = props => {
     console.log(updated_data)
 
     for (var key in updated_data) {
-      if (updated_data[key] == undefined || updated_data[key] == null) {
+      if (updated_data[key] == undefined || updated_data[key] == null || updated_data[key] == '') {
         updated_data[key] = ''
         if (key == 'essential' || key == 'care' || key=="health" || key=="pregnant") {
           updated_data[key] = false
