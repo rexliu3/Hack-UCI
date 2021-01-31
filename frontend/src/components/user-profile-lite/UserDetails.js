@@ -19,15 +19,15 @@ const marks = [
   },
   {
     value: 25,
-    label: '25 Days',
+    label: '25',
   },
   {
     value: 50,
-    label: '50 Days',
+    label: '50',
   },
   {
     value: 75,
-    label: '75 Days',
+    label: '75',
   },
   {
     value: 100,
@@ -36,15 +36,11 @@ const marks = [
 ];
 
 const userDetails = {
-  name: "Charles Liu",
   jobTitle: "Vulnerable Population",
   performanceReportTitle: "Vaccination Priority",
   performanceReportValue: 74,
   performanceReportTitle2: "Estimated Time of Vaccination",
-  performanceReportValue2: 4,
-  metaTitle: "Description",
-  metaValue:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
+  performanceReportValue2: 87,
 }
 
 const UserDetails = (props) => {
@@ -92,11 +88,11 @@ const UserDetails = (props) => {
             />
           </div>
           <a href="/submit-appeal">
-            <Button outline color='secondary' style={{ display: 'flex', margin: '0.5vw auto' }}>
+            <Button outline color='secondary' style={{ display: 'inline', margin: '0.5vw auto' }}>
               Apply for Priority Vaccination
           </Button>
           </a>
-          <Button outline color='secondary' style={{ display: 'flex', margin: '0.5vw auto' }} onClick={() => { auth.signOut() }}>
+          <Button outline color='secondary' style={{ display: 'inline', margin: '0.5vw auto', float: 'right' }} onClick={() => { auth.signOut() }}>
             Sign Out
           </Button>
         </ListGroupItem>
