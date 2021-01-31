@@ -106,12 +106,12 @@ UsersByDevice.propTypes = {
 };
 
 UsersByDevice.defaultProps = {
-  title: "Users by device",
+  title: "Proportion of Vaccinated People",
   chartData: {
     datasets: [
       {
         hoverBorderColor: "#ffffff",
-        data: [68.3, 24.2, 7.5],
+        data: [3266914, 39500000],
         backgroundColor: [
           "rgba(0,123,255,0.9)",
           "rgba(0,123,255,0.5)",
@@ -119,7 +119,7 @@ UsersByDevice.defaultProps = {
         ]
       }
     ],
-    labels: ["Desktop", "Tablet", "Mobile"]
+    labels: ["Vaccinated", "Unvaccinated"]
   }
 };
 

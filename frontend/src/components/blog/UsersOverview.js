@@ -133,7 +133,7 @@ UsersOverview.propTypes = {
 };
 
 UsersOverview.defaultProps = {
-  title: "Users Overview",
+  title: "Vaccinations",
   chartData: {
     labels: Array.from(new Array(30), (_, i) => (i === 0 ? 1 : i)),
     datasets: [
@@ -142,7 +142,7 @@ UsersOverview.defaultProps = {
         fill: "start",
         data: [
           3000,
-          800,
+          1200,
           320,
           180,
           240,
