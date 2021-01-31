@@ -91,8 +91,31 @@ const questions = [
       Long-standing systemic health and social inequities have put many people from racial and ethnic minority groups at increased risk of getting sick and dying from COVID-19.`
     ],
     num: 6
-  }
+  },
+  {
+    question:
+      "Where is this data retrieved from?",
+    answer: [`Data on vaccines distributed and administered comes from the Centers for Disease Control and Prevention, which updates data daily.
+    The federal data may differ from that reported by states and territories, which may post on different schedules. Providers have 72 hours to report doses administered and it can take additional time for jurisdictions and the C.D.C. to receive this information.`],
+    num: 7
+  },
+  {
+    question: "How is my vaccine date calculated?",
+    answer: [`The vaccine date takes into account an individual's geographical region, the number of distribution centers around them, an individual's age and occupation, medical history, and the PVI score to just name a few. This helps determine the most at risk individuals who need the vaccine.`],
+    num: 8
+  },
+  {
+    question: "How quickly are vaccines distributed?",
+    answer: [`Providers are administering about 1.3 million doses per day on average. President Biden has promised to administer 100 million vaccines by his 100th day in office, and recently suggested the nation could soon reach an average of 1.5 million shots a day.
+    Federal regulators have given emergency approval to vaccines developed by Pfizer-BioNTech and Moderna. Both vaccines require patients to receive two doses spaced weeks apart.
+    The federal government has delivered about 49.2 million doses to states, territories and federal agencies.`,
+  ],
+  num: 9
+  },
+
 ];
+
+
 
 const Questions = () => {
   const classes = useStyles();
