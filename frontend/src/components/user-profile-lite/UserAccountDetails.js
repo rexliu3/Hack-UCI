@@ -184,7 +184,11 @@ const UserAccountDetails = props => {
 
   const onCheck = e => {
     const { name } = e.target;
-    setInputs(prev => ({ ...prev, [name]: !inputs.name}));
+    if (inputs.name == undefined || inputs.name == null) {
+      setInputs(prev => ({ ...prev, [name]: true}));
+    } else {
+      setInputs(prev => ({ ...prev, [name]: !inputs.name}));
+    }
   }
 
   return (
