@@ -111,6 +111,7 @@ const UserAccountDetails = props => {
       //wapScore: inputs.wapScore,
       //pastApplications: inputs.pastApplications
     };
+    console.log(updated_data)
 
     for (var key in updated_data) {
       if (updated_data[key] == undefined || updated_data[key] == null) {
@@ -118,7 +119,7 @@ const UserAccountDetails = props => {
         if (key == 'essential' || key == 'care' || key=="health" || key=="pregnant") {
           updated_data[key] = false
         }
-      } else if(updated_data[key] == 'true') {
+      } else if (updated_data[key] == 'true') {
         updated_data[key] = true
       } else if(updated_data[key] == 'false') {
         updated_data[key] = false
@@ -180,6 +181,11 @@ const UserAccountDetails = props => {
     const { name, value } = e.target;
     setInputs(prev => ({ ...prev, [name]: value }));
   };
+
+  const onCheck = e => {
+    const { name } = e.target;
+    setInputs(prev => ({ ...prev, [name]: !inputs.name}));
+  }
 
   return (
     <Card small className="mb-4">
@@ -292,10 +298,10 @@ const UserAccountDetails = props => {
                   </Col>
                 </Row>
                 <Row>
-                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="care" value={inputs.care} onChange={handleChange}/>Longterm Care Worker</div>
-                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="essential" value={inputs.essential} onChange={handleChange}/>Essential Worker</div>
-                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="health" value={inputs.health} onChange={handleChange}/>Healthcare Worker</div>
-                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="pregnant" value={inputs.pregnant} onChange={handleChange}/>Pregnant</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="care" value={inputs.care} onChange={onCheck}/>Longterm Care Worker</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="essential" value={inputs.essential} onChange={onCheck}/>Essential Worker</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="health" value={inputs.health} onChange={onCheck}/>Healthcare Worker</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="pregnant" value={inputs.pregnant} onChange={onCheck}/>Pregnant</div>
 
                   
                 </Row>
