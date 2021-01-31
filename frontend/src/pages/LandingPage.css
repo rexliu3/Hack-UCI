@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+}
+
+main {
+    margin: 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    
+    background: #FFFFFF;
+    color: #000000;
+}
+
+.title {
+    margin-right: auto;
+    font-size: 175%;
+    padding: 12px 16px;
+}
+
+.item {
+    padding: 16px 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.navButton {
+    color: black;
+    background: #F3F1FF;
+    border-radius: 2px;
+    margin-left: 16px;
+}
+
+.container {
+    display: flex;
+}
+
+.backgroundImg {
+    position: absolute;
+    width: 70%;
+    height: 90%;
+    left: 30%;
+    top: 80px;
+}
+
+.bigTitle {
+    position: absolute;
+    width: 70%;
+    height: 10%;
+    left: 5%;
+    top: 300px;
+    font-size: 90px;
+
+    color: #000000;
+}
+
+.description {
+    position: absolute;
+    width: 30%;
+    height: 10%;
+    left: 8%;
+    top: 385px;
+
+    color: #000000;
+}
+
+.dashboard {
+    position: absolute;
+    left: 195px;
+    top: 430px;
+    font-weight: 500;
+}
