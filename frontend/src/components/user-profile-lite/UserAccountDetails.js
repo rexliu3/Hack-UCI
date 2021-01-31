@@ -12,9 +12,12 @@ import {
   FormInput,
   FormSelect,
   FormTextarea,
-  Button
+  Button,
+  FormCheckbox
 } from "shards-react";
 import firebase from "../../firebase/index";
+
+import Checkbox from '@material-ui/core/Checkbox';
 
 const UserAccountDetails = props => {
   const { data } = props;
@@ -47,7 +50,11 @@ const UserAccountDetails = props => {
     state: "",
     medicalConditions: "",
     wapScore: "",
-    pastApplications: ""
+    pastApplications: "",
+    care: false,
+    essential: false,
+    health: false,
+    pregnant: false,
   };
 
   const [inputs, setInputs] = useState(initstate);
@@ -73,7 +80,11 @@ const UserAccountDetails = props => {
           medicalConditions: doc.data().medicalConditions,
           wapScore: doc.data().wapScore,
           pastApplications: doc.data().pastApplications,
-          photoURL: doc.data().photoURL
+          photoURL: doc.data().photoURL,
+          care: doc.data().care,
+          essential: doc.data().essential,
+          health: doc.data().health,
+          pregnant: doc.data().pregnant,
         }));
       })
       .catch(function(error) {
@@ -91,22 +102,27 @@ const UserAccountDetails = props => {
       city: inputs.city,
       state: inputs.state,
       medicalConditions: inputs.medicalConditions,
-      photoURL: inputs.photoURL
+      photoURL: inputs.photoURL,
+      care: inputs.care,
+      essential: inputs.essential,
+      health: inputs.health,
+      pregnant: inputs.pregnant,
+
       //wapScore: inputs.wapScore,
       //pastApplications: inputs.pastApplications
     };
 
-    let any = false;
     for (var key in updated_data) {
       if (updated_data[key] == undefined || updated_data[key] == null) {
-        any = true;
+        updated_data[key] = ''
+        if (key == 'essential' || key == 'care' || key=="health" || key=="pregnant") {
+          updated_data[key] = false
+        }
+      } else if(updated_data[key] == 'true') {
+        updated_data[key] = true
+      } else if(updated_data[key] == 'false') {
+        updated_data[key] = false
       }
-    }
-
-    if (any) {
-      setError(true);
-    } else {
-      setError(false);
     }
 
     if (!error) {
@@ -274,6 +290,14 @@ const UserAccountDetails = props => {
                       rows="5"
                     />
                   </Col>
+                </Row>
+                <Row>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="care" value={inputs.care} onChange={handleChange}/>Longterm Care Worker</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="essential" value={inputs.essential} onChange={handleChange}/>Essential Worker</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="health" value={inputs.health} onChange={handleChange}/>Healthcare Worker</div>
+                  <div style={{margin:'-1rem auto 0.2rem auto'}}><Checkbox color="primary" name="pregnant" value={inputs.pregnant} onChange={handleChange}/>Pregnant</div>
+
+                  
                 </Row>
                 <Button onClick={inputs => updateSpecificUser(inputs)}>
                   Update Account
