@@ -101,8 +101,6 @@ class UsersOverview extends React.Component {
           vaccinations_data = await this.state.vaccinations;
         }
 
-        console.log(vaccinations_data)
-
         var labes = []
 
         for (let i = 1; i <= 30; i ++) {
