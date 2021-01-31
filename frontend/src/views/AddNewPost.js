@@ -10,7 +10,7 @@ const AddNewPost = () => (
   <Container fluid className="main-content-container px-4 pb-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
-      <PageTitle sm="4" title="Submit your Appeal" subtitle="Appeal" className="text-sm-left" />
+      <PageTitle sm="4" title="Apply for Priority Vaccination" subtitle="Need the vaccine earlier?" className="text-sm-left" />
     </Row>
 
     <Row>
@@ -21,7 +21,7 @@ const AddNewPost = () => (
 
       {/* Sidebar Widgets */}
       <Col lg="3" md="12">
-      <SidebarCategories />
+        <SidebarCategories />
         <SidebarActions />
       </Col>
     </Row>

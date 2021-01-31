@@ -23,15 +23,15 @@ const SidebarCategories = ({ title }) => (
     <CardBody className="p-0">
       <ListGroup flush>
         <ListGroupItem className="px-3 pb-2">
-        <Checkbox className="mb-1" value="frontline" color="primary"/><div style={{display:'inline'}}>Medical Condition</div>
-        <br/>
-        <Checkbox className="mb-1" value="frontline" color="primary"/><div style={{display:'inline'}}>Vulnerable Population</div>
-        <br/>
-          <Checkbox className="mb-1" value="frontline" color="primary"/><div style={{display:'inline'}}>Frontline Worker</div>
-          <br/>
-          <Checkbox className="mb-1" value="frontline" color="primary"/><div style={{display:'inline'}}> Mandatory Travel</div>
-          <br/>
-          <Checkbox className="mb-1" value="frontline" color="primary"/><div style={{display:'inline'}}> Uncategorized</div>
+          <Checkbox className="mb-1" value="frontline" color="primary" /><div style={{ display: 'inline' }}>Medical Condition</div>
+          <br />
+          <Checkbox className="mb-1" value="frontline" color="primary" /><div style={{ display: 'inline' }}>Vulnerable Population</div>
+          <br />
+          <Checkbox className="mb-1" value="frontline" color="primary" /><div style={{ display: 'inline' }}>Frontline Worker</div>
+          <br />
+          <Checkbox className="mb-1" value="frontline" color="primary" /><div style={{ display: 'inline' }}> Mandatory Travel</div>
+          <br />
+          <Checkbox className="mb-1" value="frontline" color="primary" /><div style={{ display: 'inline' }}> Other</div>
         </ListGroupItem>
       </ListGroup>
     </CardBody>
@@ -46,7 +46,7 @@ SidebarCategories.propTypes = {
 };
 
 SidebarCategories.defaultProps = {
-  title: "Categories"
+  title: "Priority Category"
 };
 
 export default SidebarCategories;

@@ -13,7 +13,7 @@ const BlogOverview = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
-      <PageTitle title="Blog Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
+      <PageTitle title="Covid-19 Vaccination Dashboard" subtitle="The state of vaccinations in the US" className="text-sm-left mb-3" />
     </Row>
 
     {/* Small Stats Blocks */}
