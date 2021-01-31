@@ -21,18 +21,24 @@ let logged_in = false;
 
 const UserProfileLite = () => {
   const user = useContext(UserContext);
+  let userInfo = {};
   
   if (user) {
-    const { email, displayName, uid, photoURL } = user;
-    console.log('ljlakjglajglakgj' + user.email + user.displayName + user.uid + '|||' + user.photoURL);
+    userInfo = {
+      email: user.email,
+      displayName: user.displayName,
+      uid: user.uid,
+      photoURL: user.photoURL,
+    }
   } else {
-    const email = null
-    const displayName = null
-    const uid = null
-    const photoURL = null
+    userInfo = {
+      email: null,
+      displayName: null,
+      uid: null,
+      photoURL: null,
+    }
   }
   
-
   const onSignInHandler = () => {
     auth.signInWithPopup(provider);
   };
@@ -52,10 +58,10 @@ const UserProfileLite = () => {
             </Row>
             <Row>
               <Col lg="4">
-                <UserDetails data={{photo: user.photoURL, displayName: user.displayName}}/>
+                <UserDetails data={userInfo}/>
               </Col>
               <Col lg="8">
-                <UserAccountDetails />
+                <UserAccountDetails data={userInfo}/>
               </Col>
             </Row>{" "}
           </div>

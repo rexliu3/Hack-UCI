@@ -13,6 +13,7 @@ import {
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
+import LinkIcon from '@material-ui/icons/Link';
 
 class BlogPosts extends React.Component {
   constructor(props) {
@@ -70,58 +71,55 @@ class BlogPosts extends React.Component {
       // Second list of posts.
       PostsListTwo: [
         {
-          backgroundImage: require("../images/content-management/5.jpeg"),
-          category: "Travel",
-          categoryTheme: "info",
-          author: "Anna Ken",
-          authorAvatar: require("../images/avatars/0.png"),
-          title:
-            "Attention he extremity unwilling on otherwise cars backwards yet",
+          backgroundImage: require("../images/articles/article5.png"),
+          category: "Other",
+          categoryTheme: "warning",
+          authorAvatar: require("../images/articles/article52.png"),
+          title: "Improving the pace of vaccine distribution through technology",
           body:
-            "Conviction up partiality as delightful is discovered. Yet jennings resolved disposed exertion you off. Left did fond drew fat head poor jet pan flying over...",
-          date: "29 February 2019"
+            "The Microsoft Vaccination Management platform includes a growing collection of vaccination specific solutions from Microsoft and our partner ecosystem. They are designed to...",
+          date: "27 January 2021",
+          link: "https://cloudblogs.microsoft.com/industry-blog/health/2021/01/27/improving-the-pace-of-vaccine-distribution-through-technology/"
         },
         {
-          backgroundImage: require("../images/content-management/6.jpeg"),
-          category: "Business",
-          categoryTheme: "dark",
-          author: "John James",
-          authorAvatar: require("../images/avatars/1.jpg"),
-          title:
-            "Totally words widow one downs few age every seven if miss part by fact",
+          backgroundImage: require("../images/articles/article6.png"),
+          category: "Other",
+          categoryTheme: "warning",
+          authorAvatar: require("../images/articles/article62.png"),
+          title: "How Google's helping get vaccines to more people",
           body:
-            "Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education to admitted speaking...",
-          date: "29 February 2019"
-        }
+            "During the pandemic, Google has helped people get the information they need to keep their families safe and healthy. We’ve supported small businesses and partnered with Apple to...",
+          date: "25 January 2021",
+          link: "https://blog.google/technology/health/vaccines-how-were-helping/"
+        },
       ],
 
       // Third list of posts.
       PostsListThree: [
         {
-          author: "John James",
-          authorAvatar: require("../images/avatars/1.jpg"),
-          title: "Had denoting properly jointure which well books beyond",
+          authorAvatar: require("../images/articles/article72.png"),
+          title: "Unemployment in Today’s Recession Compared to the Global Financial Crisis",
           body:
-            "In said to of poor full be post face snug. Introduced imprudence see say unpleasing devonshire acceptance son. Exeter longer wisdom work...",
-          date: "29 February 2019"
+            "In particular, we find that while teleworkable jobs are indeed more secure than non-teleworkable occupations during the current pandemic-related recession, this pattern has also been observed during the global financial crisis of 2007–09—meaning that something more than pandemic-related restrictions is at play.",
+          date: "23 July 2020",
+          link: "https://blogs.imf.org/2020/07/23/unemployment-in-todays-recession-compared-to-the-global-financial-crisis/"
         },
         {
-          author: "John James",
-          authorAvatar: require("../images/avatars/2.jpg"),
-          title: "Husbands ask repeated resolved but laughter debating",
+          authorAvatar: require("../images/articles/article72.png"),
+          title: "The COVID-19 Gender Gap",
           body:
-            "It abode words began enjoy years no do ﻿no. Tried spoil as heart visit blush or. Boy possible blessing sensible set but margaret interest. Off tears...",
-          date: "29 February 2019"
+            "Well-designed policies to foster recovery can mitigate the negative effects of the crisis on women and prevent further setbacks for gender equality. What is good for women is ultimately good for addressing income inequality, economic growth, and resilience.",
+          date: "21 July 2020",
+          link: "https://blogs.imf.org/2020/07/21/the-covid-19-gender-gap/"
         },
         {
-          author: "John James",
-          authorAvatar: require("../images/avatars/3.jpg"),
-          title:
-            "Instantly gentleman contained belonging exquisite now direction",
+          authorAvatar: require("../images/articles/article72.png"),
+          title: "How Pandemics Leave the Poor Even Farther Behind",
           body:
-            "West room at sent if year. Numerous indulged distance old law you. Total state as merit court green decay he. Steepest merit checking railway...",
-          date: "29 February 2019"
-        }
+            "Behind this dire statistic is an even grimmer possibility: if past pandemics are any guide, the toll on poorer and vulnerable segments of society will be several times worse. Indeed, a recent poll of top economists found that the vast majority felt the COVID-19 pandemic will worsen inequality, in part through its disproportionate impact on low-skilled workers.",
+          date: "11 May 2020",
+          link: "https://blogs.imf.org/2020/05/11/how-pandemics-leave-the-poor-even-farther-behind/"
+        },
       ],
     };
   }
@@ -187,9 +185,11 @@ class BlogPosts extends React.Component {
           {PostsListTwo.map((post, idx) => (
             <Col lg="6" sm="12" className="mb-4" key={idx}>
               <Card small className="card-post card-post--aside card-post--1">
-                <div
+                <a
                   className="card-post__image"
                   style={{ backgroundImage: `url('${post.backgroundImage}')` }}
+                  href={post.link}
+                  target="_blank"
                 >
                   <Badge
                     pill
@@ -199,17 +199,15 @@ class BlogPosts extends React.Component {
                   </Badge>
                   <div className="card-post__author d-flex">
                     <a
-                      href="#"
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{ backgroundImage: `url('${post.authorAvatar}')` }}
                     >
-                      Written by Anna Ken
                     </a>
                   </div>
-                </div>
+                </a>
                 <CardBody>
                   <h5 className="card-title">
-                    <a className="text-fiord-blue" href="#">
+                    <a className="text-fiord-blue" href={post.link} target="_blank">
                       {post.title}
                     </a>
                   </h5>
@@ -227,17 +225,15 @@ class BlogPosts extends React.Component {
             <Col lg="4" key={idx}>
               <Card small className="card-post mb-4">
                 <CardBody>
-                  <h5 className="card-title">{post.title}</h5>
+                  <a href={post.link}><h5 className="card-title">{post.title}</h5></a>
                   <p className="card-text text-muted">{post.body}</p>
                 </CardBody>
                 <CardFooter className="border-top d-flex">
                   <div className="card-post__author d-flex">
                     <a
-                      href="#"
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{ backgroundImage: `url('${post.authorAvatar}')` }}
                     >
-                      Written by James Khan
                     </a>
                     <div className="d-flex flex-column justify-content-center ml-3">
                       <span className="card-post__author-name">
@@ -247,9 +243,11 @@ class BlogPosts extends React.Component {
                     </div>
                   </div>
                   <div className="my-auto ml-auto">
-                    <Button size="sm" theme="white">
-                      <i className="far fa-bookmark mr-1" /> Bookmark
-                    </Button>
+                    <a href={post.link} target='_blank'>
+                      <Button size="sm" theme="white">
+                        <LinkIcon fontSize='small' style={{transform:'rotate(-45deg)'}}/> Read More
+                      </Button>
+                    </a>
                   </div>
                 </CardFooter>
               </Card>
