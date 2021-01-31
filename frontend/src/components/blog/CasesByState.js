@@ -36,8 +36,6 @@ class CasesByState extends React.Component {
           states_o.push(doc.data().state)
         });
 
-        console.log(cases_o)
-
         this.setState(state => {
           // Important: read `state` instead of `this.state` when updating.
           return { cases: cases_o, growth: growth_o, states: states_o };
@@ -115,7 +113,6 @@ class CasesByState extends React.Component {
         while (!cases_data) {
           cases_data = await this.state.cases;
         }
-        console.log(this.state.cases)
 
         const chartData = {
           datasets: [
