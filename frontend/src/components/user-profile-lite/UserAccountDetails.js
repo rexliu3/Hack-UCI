@@ -140,8 +140,7 @@ const UserAccountDetails = props => {
           console.error("Error", error);
         });
     }
-
-    
+    // location.reload();
   };
 
   useEffect(() => {
