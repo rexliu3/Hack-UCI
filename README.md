@@ -30,7 +30,6 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center">
@@ -63,7 +62,6 @@ Vaccelerator aids users in having an easy-to-use and personalized vaccine sign u
   ```
 
 ### Installation
-
 1. Clone the repo
    ```sh
    git clone https://github.com/rexliu3/Hack-UCI.git
@@ -80,7 +78,6 @@ Vaccelerator aids users in having an easy-to-use and personalized vaccine sign u
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
 Run node application
    ```sh
    npm run
@@ -91,14 +88,11 @@ Note: Not all dashboard displays may function as the .env file has been removed 
 
 <!-- ROADMAP -->
 ## Roadmap
-
 See the [open issues](https://github.com/rexliu3/Hack-UCI/issues) for a list of proposed features (and known issues).
-
 
 
 <!-- CONTRIBUTING -->
 ## Contributing
-
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
@@ -108,16 +102,13 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
 <!-- LICENSE -->
 ## License
-
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- CONTACT -->
 ## Contact
-
 Project Link: [https://github.com/rexliu3/Hack-UCI](https://github.com/rexliu3/Hack-UCI)
 
 
