@@ -110,6 +110,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 Project Link: [https://github.com/rexliu3/Hack-UCI](https://github.com/rexliu3/Hack-UCI)
+DevPost Link: [https://devpost.com/software/vaccelerator](https://devpost.com/software/vaccelerator)
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/rexliu3/Hack-UCI?style=for-the-badge
